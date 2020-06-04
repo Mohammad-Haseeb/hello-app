@@ -21,26 +21,23 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
-    # Install NodeJS
-    - name: Install NodeJS
+
+    - name: Setup Node.js environment
       uses: actions/setup-node@v2-beta
       with:
-        node-version: 12
-       
-   # Install Yarn
-    - uses: borales/actions-yarn@v2.0.0
+        version: 12
+    - name: GitHub Action for Yarn
+      uses: Borales/actions-yarn@v2.1.0
       with:
-        cmd: install # will run 'yarn install' command
-        
-  # Build React App with Yarn
-    - name: Build React App
+        # Yarn command
+        cmd: install
+      
+    - name: creating build
       run: yarn build
       
-  # Install Surge
-    - name : Install Surge
-      run: npm install --global surge
       
-  # Deploy Surge
-    - name: Deploy React App to Surge
-      run: surge ./build reactsimple-haseeb.surge.sh --token ${{ secrets.helloApp-token }}
+    - name: installing surge
+      run: npm install -g surge
+      
+    - name: deploying on surge
+      run: surge ./build piaic_bootcamp_class2.surge.sh --token ${{secrets..helloApp-token}}
