@@ -21,9 +21,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-      # Install NodeJS
+    
+    # Install NodeJS
     - name: Install NodeJS
       uses: actions/setup-node@v2-beta
       with:
@@ -44,4 +43,4 @@ jobs:
       
   # Deploy Surge
     - name: Deploy React App to Surge
-      run: surge ./build reactsimpl.surge.sh --token ${{ secrets.helloApp-token }}
+      run: surge ./build reactsimple-haseeb.surge.sh --token ${{ secrets.helloApp-token }}
